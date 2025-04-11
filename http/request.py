@@ -1,17 +1,15 @@
 
 supported_methods = ["GET","POST","PUT","DELETE","PATCH"]
 
-class Url :
-    def __init__(self, raw_url):
-        self.raw_url = raw_url
-
 class HTTPRequest:
     def __init__(self,url : str , method : str , headers : dict[str,str] = {} , body : str  = "",http_version : str = "HTTP/1.1"):
-        self.url = Url(url)
+        self.url = url
         self.method = method
         self.headers = headers
         self.body = body
         self.http_version = http_version
+        self.query_params : dict[str,str] = {}
+        self.path_params : dict[str,str] = {}
 
 
 

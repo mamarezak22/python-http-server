@@ -4,6 +4,16 @@ from abc import ABC
 
 
 #a handler to be inherate from and implement the methods user want on that url.
+#like this:
+#
+# class EchoHandler(HTTPHandler):
+#     def get(self, request):
+#         word = request.url.path_params.get('word')
+#         return HTTPResponse(
+#             status_code=200,
+#             body=f"Echo: {word}"
+#         )
+
 class HTTPHandler(ABC):
     def get(self,request:HTTPRequest)->HTTPResponse:
         return HTTPResponse.method_not_allowed()

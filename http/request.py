@@ -16,6 +16,8 @@ class HTTPRequest:
 def parse_request_msg(request_msg : bytes)->HTTPRequest:
     request_lines = request_msg.decode().split("\r\n")
     method , url , http_version = request_lines[0].split(" ")
+    if method not in supported_methods:
+        raise ValueError(f"Unsupported method {method}")
     headers = {}
     for line in request_lines[1:]:
         if line == "":
